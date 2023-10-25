@@ -5,7 +5,7 @@
              version="2.1">
 
     <persistence-unit name="persistenceUnitName" transaction-type="RESOURCE_LOCAL">
-
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" /> <!-- DB Driver -->
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/gestorBibliotecaPersonal" /> <!-- BD Mane -->
@@ -20,5 +20,6 @@
         </properties>
 
     </persistence-unit>
+    
 
 </persistence>

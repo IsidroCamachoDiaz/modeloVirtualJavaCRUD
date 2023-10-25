@@ -28,6 +28,8 @@ public class principal {
 		u.setId_acceso(1);
 		u.setTlf_usuario("756758956");
 		u.setClave_usuario("uiothg89tuight");
+
+
 		ut.guardar(u);
 
 	}

@@ -112,6 +112,7 @@ public class Usuario {
 	public void setFch_baja_usuario(Date fch_baja_usuario) {
 		this.fch_baja_usuario = fch_baja_usuario;
 	}
+	
 	@Override
 	public String toString() {
 		return "Usuario [id_usuario=" + id_usuario + ", dni_usuario=" + dni_usuario + ", nombre_usuario="
