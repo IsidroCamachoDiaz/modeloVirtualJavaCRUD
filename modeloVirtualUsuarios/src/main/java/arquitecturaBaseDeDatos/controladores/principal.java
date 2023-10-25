@@ -2,6 +2,7 @@ package arquitecturaBaseDeDatos.controladores;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Date;
 
 import arquitecturaBaseDeDatos.dtos.Usuario;
 import arquitecturaBaseDeDatos.servicios.implementacionConexion;
@@ -28,6 +29,11 @@ public class principal {
 		u.setId_acceso(1);
 		u.setTlf_usuario("756758956");
 		u.setClave_usuario("uiothg89tuight");
+		u.setFch_alta_usuario(new Date());
+		u.setFch_fin_bloqueo_usuario(null);
+		u.setFch_baja_usuario(null);
+		
+		
 
 
 		ut.guardar(u);

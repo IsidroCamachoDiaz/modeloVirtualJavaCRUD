@@ -12,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="Usuarios")
+@Table(name="usuarios",schema = "gbp_operacional")
 public class Usuario {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -32,7 +32,7 @@ public class Usuario {
 	@Column
 	private long id_acceso;
 	@Column
-	private boolean estaBloqueado_usuario;
+	private boolean esta_bloqueado_usuario;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fch_fin_bloqueo_usuario;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -88,11 +88,11 @@ public class Usuario {
 	public void setId_acceso(long id_acceso) {
 		this.id_acceso = id_acceso;
 	}
-	public boolean isEstaBloqueado_usuario() {
-		return estaBloqueado_usuario;
+	public boolean isEsta_bloqueado_usuario() {
+		return esta_bloqueado_usuario;
 	}
 	public void setEstaBloqueado_usuario(boolean estaBloqueado_usuario) {
-		this.estaBloqueado_usuario = estaBloqueado_usuario;
+		this.esta_bloqueado_usuario = estaBloqueado_usuario;
 	}
 	public Date getFch_fin_bloqueo_usuario() {
 		return fch_fin_bloqueo_usuario;
