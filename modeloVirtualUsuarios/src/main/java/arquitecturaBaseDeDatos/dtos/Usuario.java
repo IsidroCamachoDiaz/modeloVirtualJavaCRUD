@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,8 +32,9 @@ public class Usuario {
 	private String email_usuario;
 	@Column
 	private String clave_usuario;
-	@Column
-	private long id_acceso;
+	@JoinColumn(name = "id_acceso")
+    @OneToOne(fetch = FetchType.LAZY)
+	private Acceso acceso ;
 	@Column
 	private boolean esta_bloqueado_usuario;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -82,12 +86,6 @@ public class Usuario {
 	public void setClave_usuario(String clave_usuario) {
 		this.clave_usuario = clave_usuario;
 	}
-	public long getId_acceso() {
-		return id_acceso;
-	}
-	public void setId_acceso(long id_acceso) {
-		this.id_acceso = id_acceso;
-	}
 	public boolean isEsta_bloqueado_usuario() {
 		return esta_bloqueado_usuario;
 	}
@@ -113,12 +111,23 @@ public class Usuario {
 		this.fch_baja_usuario = fch_baja_usuario;
 	}
 	
+	
+	
+	public Acceso getAcceso() {
+		return acceso;
+	}
+	public void setAcceso(Acceso acceso) {
+		this.acceso = acceso;
+	}
+	public void setEsta_bloqueado_usuario(boolean esta_bloqueado_usuario) {
+		this.esta_bloqueado_usuario = esta_bloqueado_usuario;
+	}
 	@Override
 	public String toString() {
 		return "Usuario [id_usuario=" + id_usuario + ", dni_usuario=" + dni_usuario + ", nombre_usuario="
 				+ nombre_usuario + ", apellidos_usuario=" + apellidos_usuario + ", tlf_usuario=" + tlf_usuario
-				+ ", email_usuario=" + email_usuario + ", clave_usuario=" + clave_usuario + ", id_acceso=" + id_acceso
-				+ ", estaBloqueado_usuario=" + estaBloqueado_usuario + ", fch_fin_bloqueo_usuario="
+				+ ", email_usuario=" + email_usuario + ", clave_usuario=" + clave_usuario + ", id_acceso=" + acceso.getDescripcion()
+				+ ", estaBloqueado_usuario=" + esta_bloqueado_usuario + ", fch_fin_bloqueo_usuario="
 				+ fch_fin_bloqueo_usuario + ", fch_alta_usuario=" + fch_alta_usuario + ", fch_baja_usuario="
 				+ fch_baja_usuario + "]";
 	}

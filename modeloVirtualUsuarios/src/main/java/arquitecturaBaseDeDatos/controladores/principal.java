@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
 
+import arquitecturaBaseDeDatos.dtos.Acceso;
 import arquitecturaBaseDeDatos.dtos.Usuario;
 import arquitecturaBaseDeDatos.servicios.implementacionConexion;
 import arquitecturaBaseDeDatos.servicios.interfazConexion;
@@ -26,7 +27,10 @@ public class principal {
 		u.setEmail_usuario("ujhgf@gmail.com");
 		u.setNombre_usuario("Pruebaaa");
 		u.setEstaBloqueado_usuario(false);
-		u.setId_acceso(1);
+		Acceso a= new Acceso();
+		a.setId_acceso(1);
+		a.setDescripcion("Usuario Normal");
+		u.setAcceso(a);
 		u.setTlf_usuario("756758956");
 		u.setClave_usuario("uiothg89tuight");
 		u.setFch_alta_usuario(new Date());
