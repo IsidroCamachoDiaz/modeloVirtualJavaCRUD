@@ -36,10 +36,6 @@ public class principal {
 		u.setFch_alta_usuario(new Date());
 		u.setFch_fin_bloqueo_usuario(null);
 		u.setFch_baja_usuario(null);
-		
-		
-
-
 		ut.guardar(u);
 
 	}
