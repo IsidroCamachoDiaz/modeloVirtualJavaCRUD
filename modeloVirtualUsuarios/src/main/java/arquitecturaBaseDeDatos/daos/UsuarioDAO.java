@@ -13,6 +13,6 @@ public class UsuarioDAO {
 		entity.getTransaction().begin();
 		entity.persist(u);
 		entity.getTransaction().commit();
-		JPAUtil.shutdown();
+		
 	}
 }

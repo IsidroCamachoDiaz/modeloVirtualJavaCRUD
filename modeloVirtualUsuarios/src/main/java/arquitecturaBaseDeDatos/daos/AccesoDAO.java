@@ -14,6 +14,7 @@ EntityManager entity=JPAUtil.getEntityManagerFactory().createEntityManager();
 		entity.getTransaction().begin();
 		entity.persist(a);
 		entity.getTransaction().commit();
-		JPAUtil.shutdown();
+
+		
 	}
 }

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
 
+import org.hibernate.Hibernate;
+
 import arquitecturaBaseDeDatos.dtos.Acceso;
 import arquitecturaBaseDeDatos.dtos.Usuario;
 import arquitecturaBaseDeDatos.servicios.implementacionConexion;
@@ -34,6 +36,7 @@ public class principal {
 		u.setAcceso(a);
 		ut.guardar(u);
 		ab.guardar(a);
+		
 
 	}
 
