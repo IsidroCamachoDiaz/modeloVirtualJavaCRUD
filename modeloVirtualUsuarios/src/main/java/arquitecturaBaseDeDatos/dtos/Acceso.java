@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="accesos",schema = "gbp_operacional")
+@Table(name="accesos",schema = "public")
 public class Acceso {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class Acceso {
 	
 	private String descripcion;
 	
-	 @OneToOne(mappedBy = "accesos", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@OneToOne(mappedBy="acceso")
 	    private Usuario usuario;
 
 	public long getId_acceso() {

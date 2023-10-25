@@ -15,7 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="usuarios",schema = "gbp_operacional")
+@Table(name="usuarios",schema = "public")
 public class Usuario {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -32,9 +32,10 @@ public class Usuario {
 	private String email_usuario;
 	@Column
 	private String clave_usuario;
-	@JoinColumn(name = "id_acceso")
-    @OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
+	 @JoinColumn(name="id_acceso")
 	private Acceso acceso ;
+
 	@Column
 	private boolean esta_bloqueado_usuario;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -110,15 +111,20 @@ public class Usuario {
 	public void setFch_baja_usuario(Date fch_baja_usuario) {
 		this.fch_baja_usuario = fch_baja_usuario;
 	}
-	
-	
-	
 	public Acceso getAcceso() {
 		return acceso;
 	}
 	public void setAcceso(Acceso acceso) {
 		this.acceso = acceso;
 	}
+	
+	
+	/*public Acceso getAcceso() {
+		return acceso;
+	}
+	public void setAcceso(Acceso acceso) {
+		this.acceso = acceso;
+	}*/
 	public void setEsta_bloqueado_usuario(boolean esta_bloqueado_usuario) {
 		this.esta_bloqueado_usuario = esta_bloqueado_usuario;
 	}
@@ -126,7 +132,7 @@ public class Usuario {
 	public String toString() {
 		return "Usuario [id_usuario=" + id_usuario + ", dni_usuario=" + dni_usuario + ", nombre_usuario="
 				+ nombre_usuario + ", apellidos_usuario=" + apellidos_usuario + ", tlf_usuario=" + tlf_usuario
-				+ ", email_usuario=" + email_usuario + ", clave_usuario=" + clave_usuario + ", id_acceso=" + acceso.getDescripcion()
+				+ ", email_usuario=" + email_usuario + ", clave_usuario=" + clave_usuario  
 				+ ", estaBloqueado_usuario=" + esta_bloqueado_usuario + ", fch_fin_bloqueo_usuario="
 				+ fch_fin_bloqueo_usuario + ", fch_alta_usuario=" + fch_alta_usuario + ", fch_baja_usuario="
 				+ fch_baja_usuario + "]";

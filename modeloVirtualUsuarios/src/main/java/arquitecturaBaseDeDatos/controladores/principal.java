@@ -12,31 +12,28 @@ import arquitecturaBaseDeDatos.servicios.interfazConexion;
 public class principal {
 
 	public static void main(String[] args) {
-		interfazConexion icon = new implementacionConexion();
-		Connection con =icon.conexionBaseDeDatos();
-		try {
-		if(con.isValid(3000))
-			System.out.println("La conexion esta operativa");
-		}catch(SQLException sqle) {
-			System.out.println("Hubo problemas con la conexion");
-		}
+		
 		UsuarioBean ut= new UsuarioBean();
+		AccesoBean ab= new AccesoBean();
 		Usuario u = new Usuario();
-		u.setApellidos_usuario("prueba");		
+		u.setApellidos_usuario("prueba2");		
 		u.setDni_usuario("784755D");
 		u.setEmail_usuario("ujhgf@gmail.com");
 		u.setNombre_usuario("Pruebaaa");
 		u.setEstaBloqueado_usuario(false);
-		Acceso a= new Acceso();
-		a.setId_acceso(1);
-		a.setDescripcion("Usuario Normal");
-		u.setAcceso(a);
 		u.setTlf_usuario("756758956");
 		u.setClave_usuario("uiothg89tuight");
 		u.setFch_alta_usuario(new Date());
 		u.setFch_fin_bloqueo_usuario(null);
 		u.setFch_baja_usuario(null);
+		Acceso a = new Acceso();
+		a.setCodigo_acceso("Usuario");
+		a.setId_acceso(1);
+		a.setDescripcion("U");
+		a.setUsuario(u);
+		u.setAcceso(a);
 		ut.guardar(u);
+		ab.guardar(a);
 
 	}
 
