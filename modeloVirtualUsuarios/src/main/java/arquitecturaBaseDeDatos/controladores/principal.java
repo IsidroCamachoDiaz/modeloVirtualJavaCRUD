@@ -1,22 +1,22 @@
 package arquitecturaBaseDeDatos.controladores;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.Date;
 
-import org.hibernate.Hibernate;
+import arquitecturaBaseDeDatos.daos.Acceso;
+import arquitecturaBaseDeDatos.daos.Usuario;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
-import arquitecturaBaseDeDatos.dtos.Acceso;
-import arquitecturaBaseDeDatos.dtos.Usuario;
-import arquitecturaBaseDeDatos.servicios.implementacionConexion;
-import arquitecturaBaseDeDatos.servicios.interfazConexion;
+
 
 public class principal {
 
 	public static void main(String[] args) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistenceUnitName");
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
 		
-		UsuarioBean ut= new UsuarioBean();
-		AccesoBean ab= new AccesoBean();
+		//-------------------------------------------------
 		Usuario u = new Usuario();
 		u.setApellidos_usuario("prueba2");		
 		u.setDni_usuario("784755D");
@@ -25,17 +25,26 @@ public class principal {
 		u.setEstaBloqueado_usuario(false);
 		u.setTlf_usuario("756758956");
 		u.setClave_usuario("uiothg89tuight");
-		u.setFch_alta_usuario(new Date());
+		u.setFch_alta_usuario(null);
 		u.setFch_fin_bloqueo_usuario(null);
 		u.setFch_baja_usuario(null);
+		
 		Acceso a = new Acceso();
 		a.setCodigo_acceso("Usuario");
-		a.setId_acceso(1);
-		a.setDescripcion("U");
-		a.setUsuario(u);
-		u.setAcceso(a);
-		ut.guardar(u);
-		ab.guardar(a);
+		a.setDescripcion("Acceso normal de usuario para ver libros disponibles");
+		
+		Acceso a2 = new Acceso();
+		a2.setCodigo_acceso("Administrador");
+		a2.setDescripcion("Encargado de administrar la aplicacion");
+		u.setAcceso(a2);
+		
+		//-------------------------------------------------
+		em.persist(u);
+		em.persist(a2);
+		em.getTransaction().commit();
+		em.close();
+		
+
 		
 
 	}

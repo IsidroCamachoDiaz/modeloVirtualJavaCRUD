@@ -1,49 +1,66 @@
-package arquitecturaBaseDeDatos.dtos;
+package arquitecturaBaseDeDatos.daos;
 
-import java.util.Date;
+import java.util.Calendar;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+
+
+
 
 @Entity
-@Table(name="usuarios",schema = "public")
+@Table(name="usuarios",schema = "gbp_operacional")
 public class Usuario {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_usuario", nullable=false)
 	private long id_usuario;
-	@Column
+	
+	@Column(name="dni_usuario", nullable=false)
 	private String dni_usuario;
-	@Column
+	
+	@Column(name="nombre_usuario", nullable=false)
 	private String nombre_usuario;
-	@Column
+		
+	@Column(name="apellidos_usuario", nullable=false)
 	private String apellidos_usuario;
-	@Column
+	
+	@Column(name="tlf_usuario", nullable=false)
 	private String tlf_usuario;
-	@Column
+	
+	@Column(name="email_usuario", nullable=false)
 	private String email_usuario;
-	@Column
+	
+	@Column(name="clave_usuario", nullable=false)
 	private String clave_usuario;
-	@OneToOne
-	 @JoinColumn(name="id_acceso")
-	private Acceso acceso ;
+	
+	@ManyToOne
+    @JoinColumn(name="id_acceso")
+    Acceso acceso;
 
-	@Column
+	@Column(name="esta_bloqueado_usuario", nullable=false)
 	private boolean esta_bloqueado_usuario;
+	
+	@Column(name="fch_fin_bloqueo_usuario")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date fch_fin_bloqueo_usuario;
+	private Calendar fch_fin_bloqueo_usuario;
+	
+	@Column(name="fch_alta_usuario")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date fch_alta_usuario;
+	private Calendar fch_alta_usuario;
+	
+	@Column(name="fch_baja_usuario")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date fch_baja_usuario;
+	private Calendar fch_baja_usuario;
 	
 	public long getId_usuario() {
 		return id_usuario;
@@ -93,22 +110,23 @@ public class Usuario {
 	public void setEstaBloqueado_usuario(boolean estaBloqueado_usuario) {
 		this.esta_bloqueado_usuario = estaBloqueado_usuario;
 	}
-	public Date getFch_fin_bloqueo_usuario() {
+
+	public Calendar getFch_fin_bloqueo_usuario() {
 		return fch_fin_bloqueo_usuario;
 	}
-	public void setFch_fin_bloqueo_usuario(Date fch_fin_bloqueo_usuario) {
+	public void setFch_fin_bloqueo_usuario(Calendar fch_fin_bloqueo_usuario) {
 		this.fch_fin_bloqueo_usuario = fch_fin_bloqueo_usuario;
 	}
-	public Date getFch_alta_usuario() {
+	public Calendar getFch_alta_usuario() {
 		return fch_alta_usuario;
 	}
-	public void setFch_alta_usuario(Date fch_alta_usuario) {
+	public void setFch_alta_usuario(Calendar fch_alta_usuario) {
 		this.fch_alta_usuario = fch_alta_usuario;
 	}
-	public Date getFch_baja_usuario() {
+	public Calendar getFch_baja_usuario() {
 		return fch_baja_usuario;
 	}
-	public void setFch_baja_usuario(Date fch_baja_usuario) {
+	public void setFch_baja_usuario(Calendar fch_baja_usuario) {
 		this.fch_baja_usuario = fch_baja_usuario;
 	}
 	public Acceso getAcceso() {
@@ -119,12 +137,7 @@ public class Usuario {
 	}
 	
 	
-	/*public Acceso getAcceso() {
-		return acceso;
-	}
-	public void setAcceso(Acceso acceso) {
-		this.acceso = acceso;
-	}*/
+
 	public void setEsta_bloqueado_usuario(boolean esta_bloqueado_usuario) {
 		this.esta_bloqueado_usuario = esta_bloqueado_usuario;
 	}

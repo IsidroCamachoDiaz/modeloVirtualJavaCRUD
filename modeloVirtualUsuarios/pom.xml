@@ -4,45 +4,36 @@
   <groupId>isi.accionesBaseDeDatosMaven2</groupId>
   <artifactId>modeloVirtualUsuarios</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <dependencies>
-	  <dependency>
-	    <groupId>org.postgresql</groupId>
-	    <artifactId>postgresql</artifactId>
-	    <version>42.6.0</version>
-	</dependency>
+<dependencies>
 	<dependency>
-          <groupId>org.hibernate</groupId>
-          <artifactId>hibernate-entitymanager</artifactId>
-          <version>5.3.7.Final</version>
-       </dependency>
-       <!-- https://mvnrepository.com/artifact/javax.faces/javax.faces-api -->
-<dependency>
-    <groupId>javax.faces</groupId>
-    <artifactId>javax.faces-api</artifactId>
-    <version>2.1</version>
-    <scope>provided</scope>
-</dependency>
-<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
-<dependency>
-    <groupId>javax.servlet</groupId>
-    <artifactId>javax.servlet-api</artifactId>
-    <version>4.0.1</version>
-    <scope>provided</scope>
-</dependency>
-<!-- API, java.xml.bind module -->
-<dependency>
-    <groupId>jakarta.xml.bind</groupId>
-    <artifactId>jakarta.xml.bind-api</artifactId>
-    <version>2.3.2</version>
-</dependency>
+	  <groupId>org.postgresql</groupId>
+	  <artifactId>postgresql</artifactId>
+	  <version>42.6.0</version>
+	</dependency>
+	<!-- Es necesario un proveedor de persistencia jpa para que jakarta.persistence funcione-->
+    <dependency>
+      <groupId>org.eclipse.persistence</groupId>
+      <artifactId>org.eclipse.persistence.jpa</artifactId>
+      <version>3.0.0</version>
+    </dependency>
 
-<!-- Runtime, com.sun.xml.bind module -->
-<dependency>
-    <groupId>org.glassfish.jaxb</groupId>
-    <artifactId>jaxb-runtime</artifactId>
-    <version>2.3.2</version>
-</dependency>
-
-
+  	<dependency> <!-- https://jakarta.ee/specifications/persistence/-->
+      <groupId>jakarta.persistence</groupId>
+      <artifactId>jakarta.persistence-api</artifactId>
+      <version>3.1.0</version>
+	</dependency>
   </dependencies>
+  <!--https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api-->
+  <!-- Lleva sin mantenimiento desde 2017, se está sustituyendo javax por jakarta
+  <dependency>
+    <groupId>javax.persistence</groupId>
+    <artifactId>javax.persistence-api</artifactId>
+    <version>2.2</version>
+    <scope>provided</scope>
+  </dependency>
+  -->
+    <properties>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+    </properties>
 </project>
