@@ -40,6 +40,9 @@ public class Prestamo {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar fch_entrega_prestamo;
 	
+	@Column(name="cantidad", nullable=false)
+	private String cantidad;
+	
 	@ManyToOne
     @JoinColumn(name="id_estado_prestamo")
     EstadoPrestamo estado_prestamo;
