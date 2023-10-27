@@ -14,10 +14,7 @@
         <class>arquitecturaBaseDeDatos.daos.Editorial</class>
         <class>arquitecturaBaseDeDatos.daos.EstadoPrestamo</class>
         <class>arquitecturaBaseDeDatos.daos.Libro</class>
-        <class>arquitecturaBaseDeDatos.daos.Rel_autor_libro</class>
-        <class>arquitecturaBaseDeDatos.daos.Prestamo</class>
-        <class>arquitecturaBaseDeDatos.daos.Rel_Prestamo_libro</class>
-        
+        <class>arquitecturaBaseDeDatos.daos.Prestamo</class>       
         <exclude-unlisted-classes/>
         <properties>	
 	    <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>

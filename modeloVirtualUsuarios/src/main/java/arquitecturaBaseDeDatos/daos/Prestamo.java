@@ -1,6 +1,7 @@
 package arquitecturaBaseDeDatos.daos;
 
 import java.util.Calendar;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -47,10 +49,13 @@ public class Prestamo {
     @JoinColumn(name="id_estado_prestamo")
     EstadoPrestamo estado_prestamo;
 	
+	@ManyToMany(mappedBy="libros_con_prestamos")
+	private List <Libro> librosConPrestamo;
+	
 
 	//---------------------------------------------------------------
 	public Prestamo(long id_prestamo, Libro libro, Usuario usuario, Calendar inicio_prestamo, Calendar fch_fin_prestamo,
-			Calendar fch_entrega_prestamo, String cantidad, EstadoPrestamo estado_prestamo) {
+			Calendar fch_entrega_prestamo, String cantidad, EstadoPrestamo estado_prestamo,List <Libro> prestamoLibros) {
 		super();
 		this.id_prestamo = id_prestamo;
 		this.libro = libro;
@@ -60,6 +65,7 @@ public class Prestamo {
 		this.fch_entrega_prestamo = fch_entrega_prestamo;
 		this.cantidad = cantidad;
 		this.estado_prestamo = estado_prestamo;
+		this.librosConPrestamo=prestamoLibros;
 	}
 
 

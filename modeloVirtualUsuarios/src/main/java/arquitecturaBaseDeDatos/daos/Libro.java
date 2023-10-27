@@ -8,8 +8,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -39,16 +40,21 @@ public class Libro {
     @JoinColumn(name="id_editorial")
     Editorial editorial;
 	
-	@OneToMany(mappedBy="libro")
-    List<Rel_autor_libro> libros_con_relacion_autores;   
+	@ManyToMany(mappedBy="relacionLibro")
+    List<Autor> relacionAutor;
     
-    @OneToMany(mappedBy="libro")
-    List<Rel_Prestamo_libro> libros_con_prestamos;
+	@JoinTable(
+			name="rel_libro_prestamo",schema="gbp_operacional2",
+			joinColumns= {@JoinColumn(name="id_libro")},
+			inverseJoinColumns= {@JoinColumn(name="id_prestamo")}
+			)
+    @ManyToMany
+    List<Prestamo> libros_con_prestamos;
 
   //---------------------------------------------------------------
 	public Libro(long id_libro, String isbn_libro, String titulo_libro, String edicion_libro, int cantidad_libros,
-			Genero genero, Coleccion coleccion, Editorial editorial, List<Rel_autor_libro> libros_con_relacion_autores,
-			List<Rel_Prestamo_libro> libros_con_prestamos) {
+			Genero genero, Coleccion coleccion, Editorial editorial, List<Autor> libros_con_relacion_autores,
+			List<Prestamo> libros_con_prestamos) {
 		super();
 		this.id_libro = id_libro;
 		this.isbn_libro = isbn_libro;
@@ -58,7 +64,7 @@ public class Libro {
 		this.genero = genero;
 		this.coleccion = coleccion;
 		this.editorial = editorial;
-		this.libros_con_relacion_autores = libros_con_relacion_autores;
+		this.relacionAutor = libros_con_relacion_autores;
 		this.libros_con_prestamos = libros_con_prestamos;
 	}
 

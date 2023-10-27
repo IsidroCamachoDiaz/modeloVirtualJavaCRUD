@@ -7,7 +7,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,16 +26,21 @@ public class Autor {
 	@Column(name="apellidos_autor", nullable=false)
 	private String apellidos_autor;
 	
-	@OneToMany(mappedBy="autor")
-    List<Rel_autor_libro> relacionesDeAutor;
+	@JoinTable(
+			name="rel_libro_autor",schema="gbp_operacional2",
+			joinColumns= {@JoinColumn(name="id_autor")},
+			inverseJoinColumns= {@JoinColumn(name="id_libro")}
+			)
+	@ManyToMany
+    List<Libro> relacionLibro;
   //---------------------------------------------------------------
     
-	public Autor(long id_autor, String nombre_autor, String apellidos_autor, List<Rel_autor_libro> relacionesDeAutor) {
+	public Autor(long id_autor, String nombre_autor, String apellidos_autor, List<Libro> relacionLibro) {
 		super();
 		this.id_autor = id_autor;
 		this.nombre_autor = nombre_autor;
 		this.apellidos_autor = apellidos_autor;
-		this.relacionesDeAutor = relacionesDeAutor;
+		this.relacionLibro = relacionLibro;
 	}
 	public Autor() {
 		super();
