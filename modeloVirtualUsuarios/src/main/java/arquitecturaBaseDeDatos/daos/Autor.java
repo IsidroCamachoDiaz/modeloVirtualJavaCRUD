@@ -11,7 +11,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="autores",schema = "gbp_operacional")
+@Table(name="autores",schema = "gbp_operacional2")
 public class Autor {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -25,5 +25,20 @@ public class Autor {
 	private String apellidos_autor;
 	
 	@OneToMany(mappedBy="autor")
-    List<Rel_autor_libro> relacionesDeAutor;   
+    List<Rel_autor_libro> relacionesDeAutor;
+  //---------------------------------------------------------------
+    
+	public Autor(long id_autor, String nombre_autor, String apellidos_autor, List<Rel_autor_libro> relacionesDeAutor) {
+		super();
+		this.id_autor = id_autor;
+		this.nombre_autor = nombre_autor;
+		this.apellidos_autor = apellidos_autor;
+		this.relacionesDeAutor = relacionesDeAutor;
+	}
+	public Autor() {
+		super();
+	} 
+    
+	
+    
 }

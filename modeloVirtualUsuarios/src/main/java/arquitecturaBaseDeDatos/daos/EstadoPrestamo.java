@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 @Entity
-@Table(name="estado_prestamos",schema = "gbp_operacional")
+@Table(name="estado_prestamos",schema = "gbp_operacional2")
 public class EstadoPrestamo {
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -22,8 +22,9 @@ private String codigo_estado_prestamo;
 private String descripcion_estado_prestamo;
 
 @OneToMany(mappedBy="estado_prestamo")
-List<Usuario> librosConEstadoDePrestamos;
+List<Prestamo> librosConEstadoDePrestamos;
 
+//---------------------------------------------------------------
 public long getId_estado_prestamo() {
 	return id_estado_prestamo;
 }
@@ -36,18 +37,24 @@ public String getDescripcion_estado_prestamo() {
 	return descripcion_estado_prestamo;
 }
 
-public List<Usuario> getLibrosConEstadoDePrestamos() {
+public List<Prestamo> getLibrosConEstadoDePrestamos() {
 	return librosConEstadoDePrestamos;
 }
 
 public EstadoPrestamo(long id_estado_prestamo, String codigo_estado_prestamo, String descripcion_estado_prestamo,
-		List<Usuario> librosConEstadoDePrestamos) {
+		List<Prestamo> librosConEstadoDePrestamos) {
 	super();
 	this.id_estado_prestamo = id_estado_prestamo;
 	this.codigo_estado_prestamo = codigo_estado_prestamo;
 	this.descripcion_estado_prestamo = descripcion_estado_prestamo;
 	this.librosConEstadoDePrestamos = librosConEstadoDePrestamos;
 }
+
+public EstadoPrestamo() {
+	super();
+}
+
+
 
 
 }

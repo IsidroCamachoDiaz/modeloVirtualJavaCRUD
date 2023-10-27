@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name="accesos",schema = "gbp_operacional")
+@Table(name="accesos",schema = "gbp_operacional2")
 public class Acceso {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +29,7 @@ public class Acceso {
 	 @OneToMany(mappedBy="acceso")
 	    List<Usuario> usuariosConAcceso;   
 	 
-	 
+	 //---------------------------------------------------------------
 	public List<Usuario> getUsuariosConAcceso() {
 		return usuariosConAcceso;
 	}
@@ -62,6 +62,11 @@ public class Acceso {
 		this.descripcion = descripcion;
 	}
 
+	public Acceso() {
+		super();
+	}
+
+	
 	 
 	 
 
