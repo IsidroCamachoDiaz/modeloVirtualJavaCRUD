@@ -1,8 +1,17 @@
 package arquitecturaBaseDeDatos.controladores;
 
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.List;
+
 import arquitecturaBaseDeDatos.daos.Acceso;
+import arquitecturaBaseDeDatos.daos.Autor;
 import arquitecturaBaseDeDatos.daos.Usuario;
+import arquitecturaBaseDeDatos.servicios.insert;
+import arquitecturaBaseDeDatos.servicios.select;
+import arquitecturaBaseDeDatos.servicios.update;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -17,31 +26,40 @@ public class principal {
 		em.getTransaction().begin();
 		
 		//-------------------------------------------------
-		Usuario u = new Usuario();
-		u.setApellidos_usuario("prueba2");		
-		u.setDni_usuario("784755D");
-		u.setEmail_usuario("ujhgf@gmail.com");
-		u.setNombre_usuario("Pruebaaa");
-		u.setEstaBloqueado_usuario(false);
-		u.setTlf_usuario("756758956");
-		u.setClave_usuario("uiothg89tuight");
-		u.setFch_alta_usuario(null);
-		u.setFch_fin_bloqueo_usuario(null);
-		u.setFch_baja_usuario(null);
+		/*Autor a = new Autor();
+		a.setNombre_autor("Fernando");
+		a.setApellidos_autor("Hernandez");*/
+		insert i = new insert(em);
+		//i.insertAutor(a);
+		/*Acceso ac = new Acceso();
+		ac.setCodigo_acceso("Admin");
+		ac.setDescripcion("Administrador de la aplicacion");*/
 		
-		Acceso a = new Acceso();
-		a.setCodigo_acceso("Usuario");
-		a.setDescripcion("Acceso normal de usuario para ver libros disponibles");
+		Usuario us = new Usuario();
+		//us.setAcceso(ac);
 		
-		Acceso a2 = new Acceso();
-		a2.setCodigo_acceso("Administrador");
-		a2.setDescripcion("Encargado de administrar la aplicacion");
-		u.setAcceso(a2);
-		
+		List <Usuario> users = new ArrayList <Usuario>();
+		users.add(us);	
+		//ac.setUsuariosConAcceso(users);
+		us.setApellidos_usuario("Gutierrez");
+		us.setClave_usuario("suuu862785");
+		us.setDni_usuario("66834966G");
+		us.setEmail_usuario("yewfghcv@yfshg.com");
+		us.setEsta_bloqueado_usuario(false);
+		us.setFch_alta_usuario(new GregorianCalendar());
+		//i.insertAcceso(ac);
+		//i.insertUsuario(us);
+		select s = new select(em);
+		Acceso a2 = s.selectAcceso("SELECT a FROM Acceso a WHERE a.id_acceso=1");
+		us.setAcceso(a2);
+		users.add(us);
+		a2.getUsuariosConAcceso().add(us);
+		us.setNombre_usuario("Manueeeel");
+		us.setTlf_usuario("98047465874");
+		i.insertUsuario(us);
+		update u = new update(em);
+		u.updateAcceso(a2);
 		//-------------------------------------------------
-		em.persist(u);
-		em.persist(a2);
-		em.getTransaction().commit();
 		em.close();
 		
 

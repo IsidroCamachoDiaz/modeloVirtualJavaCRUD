@@ -44,7 +44,22 @@ public class Autor {
 	}
 	public Autor() {
 		super();
+	}
+	
+	public String getNombre_autor() {
+		return nombre_autor;
+	}
+	public void setNombre_autor(String nombre_autor) {
+		this.nombre_autor = nombre_autor;
+	}
+	public String getApellidos_autor() {
+		return apellidos_autor;
+	}
+	public void setApellidos_autor(String apellidos_autor) {
+		this.apellidos_autor = apellidos_autor;
 	} 
+	
+	
     
 	
     
