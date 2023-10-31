@@ -18,9 +18,7 @@ private EntityManager em;
 		this.em = em;
 	}
 	public void updateAcceso(Acceso acceso) {
-		em.getTransaction().begin();
 	    em.merge(acceso);
-	    em.getTransaction().commit();
 	}
 	public void updateAutor(Autor autor) {
 		em.getTransaction().begin();

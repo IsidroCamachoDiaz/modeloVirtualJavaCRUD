@@ -41,8 +41,8 @@ public class principal {
 		List <Usuario> users = new ArrayList <Usuario>();
 		users.add(us);	
 		//ac.setUsuariosConAcceso(users);
-		us.setApellidos_usuario("Gutierrez");
-		us.setClave_usuario("suuu862785");
+		us.setApellidos_usuario("Gutierrez2");
+		us.setClave_usuario("suuu8627852");
 		us.setDni_usuario("66834966G");
 		us.setEmail_usuario("yewfghcv@yfshg.com");
 		us.setEsta_bloqueado_usuario(false);
@@ -54,7 +54,7 @@ public class principal {
 		us.setAcceso(a2);
 		users.add(us);
 		a2.getUsuariosConAcceso().add(us);
-		us.setNombre_usuario("Manueeeel");
+		us.setNombre_usuario("Manueeeel2");
 		us.setTlf_usuario("98047465874");
 		i.insertUsuario(us);
 		update u = new update(em);
