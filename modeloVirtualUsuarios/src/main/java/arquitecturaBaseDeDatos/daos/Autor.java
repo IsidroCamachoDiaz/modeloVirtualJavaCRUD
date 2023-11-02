@@ -35,9 +35,8 @@ public class Autor {
     List<Libro> relacionLibro;
   //---------------------------------------------------------------
     
-	public Autor(long id_autor, String nombre_autor, String apellidos_autor, List<Libro> relacionLibro) {
+	public Autor(String nombre_autor, String apellidos_autor, List<Libro> relacionLibro) {
 		super();
-		this.id_autor = id_autor;
 		this.nombre_autor = nombre_autor;
 		this.apellidos_autor = apellidos_autor;
 		this.relacionLibro = relacionLibro;
@@ -57,7 +56,21 @@ public class Autor {
 	}
 	public void setApellidos_autor(String apellidos_autor) {
 		this.apellidos_autor = apellidos_autor;
-	} 
+	}
+	public List<Libro> getRelacionLibro() {
+		return relacionLibro;
+	}
+	public void setRelacionLibro(List<Libro> relacionLibro) {
+		this.relacionLibro = relacionLibro;
+	}
+	@Override
+	public String toString() {
+		return "Autor [id_autor=" + id_autor + ", nombre_autor=" + nombre_autor + ", apellidos_autor=" + apellidos_autor
+				+ ", relacionLibro=" + relacionLibro + "]";
+	}
+	
+	
+	
 	
 	
     

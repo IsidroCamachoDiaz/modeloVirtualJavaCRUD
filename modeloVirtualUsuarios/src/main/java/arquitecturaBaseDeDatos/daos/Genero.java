@@ -26,9 +26,8 @@ public class Genero {
     List<Libro> libros_con_genero;
 
 	//---------------------------------------------------------------
-	public Genero(long id_genero, String nombre_genero, String descripcion_genero, List<Libro> libros_con_genero) {
+	public Genero(String nombre_genero, String descripcion_genero, List<Libro> libros_con_genero) {
 		super();
-		this.id_genero = id_genero;
 		this.nombre_genero = nombre_genero;
 		this.descripcion_genero = descripcion_genero;
 		this.libros_con_genero = libros_con_genero;

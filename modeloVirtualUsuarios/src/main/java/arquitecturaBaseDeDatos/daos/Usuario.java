@@ -161,12 +161,11 @@ public class Usuario {
 		super();
 	}
 	
-	public Usuario(long id_usuario, String dni_usuario, String nombre_usuario, String apellidos_usuario,
+	public Usuario(String dni_usuario, String nombre_usuario, String apellidos_usuario,
 			String tlf_usuario, String email_usuario, String clave_usuario, Acceso acceso,
 			boolean esta_bloqueado_usuario, Calendar fch_fin_bloqueo_usuario, Calendar fch_alta_usuario,
 			Calendar fch_baja_usuario, List<Prestamo> lista_usuario_prestamos) {
 		super();
-		this.id_usuario = id_usuario;
 		this.dni_usuario = dni_usuario;
 		this.nombre_usuario = nombre_usuario;
 		this.apellidos_usuario = apellidos_usuario;

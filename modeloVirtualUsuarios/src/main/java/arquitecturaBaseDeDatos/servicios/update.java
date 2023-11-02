@@ -11,46 +11,46 @@ import arquitecturaBaseDeDatos.daos.Prestamo;
 import jakarta.persistence.EntityManager;
 
 public class update {
-private EntityManager em;
 	
-	public update(EntityManager em) {
+	public update() {
 		super();
-		this.em = em;
 	}
-	public void updateAcceso(Acceso acceso) {
+	public void updateAcceso(EntityManager em,Acceso acceso) {
+		em.getTransaction().begin();
 	    em.merge(acceso);
+	    em.getTransaction().commit();
 	}
-	public void updateAutor(Autor autor) {
+	public void updateAutor(EntityManager em,Autor autor) {
 		em.getTransaction().begin();
 	    em.merge(autor);
 	    em.getTransaction().commit();
 	}
-	public void updateColeccion(Coleccion coleccion) {
+	public void updateColeccion(EntityManager em,Coleccion coleccion) {
 		em.getTransaction().begin();
 	    em.merge(coleccion);
 	    em.getTransaction().commit();
 	}
-	public void updateEditorial(Editorial editorial) {
+	public void updateEditorial(EntityManager em,Editorial editorial) {
 		em.getTransaction().begin();
 	    em.merge(editorial);
 	    em.getTransaction().commit();
 	}
-	public void updateEstadoPrestamo(EstadoPrestamo estadoPrestamo) {
+	public void updateEstadoPrestamo(EntityManager em,EstadoPrestamo estadoPrestamo) {
 		em.getTransaction().begin();
 	    em.merge(estadoPrestamo);
 	    em.getTransaction().commit();
 	}
-	public void updateGenero(Genero genero) {
+	public void updateGenero(EntityManager em,Genero genero) {
 		em.getTransaction().begin();
 	    em.merge(genero);
 	    em.getTransaction().commit();
 	}
-	public void updateLibro(Libro libro) {
+	public void updateLibro(EntityManager em,Libro libro) {
 		em.getTransaction().begin();
 	    em.merge(libro);
 	    em.getTransaction().commit();
 	}
-	public void updatePrestamo(Prestamo prestamo) {
+	public void updatePrestamo(EntityManager em,Prestamo prestamo) {
 		em.getTransaction().begin();
 	    em.merge(prestamo);
 	    em.getTransaction().commit();

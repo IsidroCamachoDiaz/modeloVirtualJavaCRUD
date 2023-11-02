@@ -52,11 +52,10 @@ public class Libro {
     List<Prestamo> libros_con_prestamos;
 
   //---------------------------------------------------------------
-	public Libro(long id_libro, String isbn_libro, String titulo_libro, String edicion_libro, int cantidad_libros,
+	public Libro(String isbn_libro, String titulo_libro, String edicion_libro, int cantidad_libros,
 			Genero genero, Coleccion coleccion, Editorial editorial, List<Autor> libros_con_relacion_autores,
 			List<Prestamo> libros_con_prestamos) {
 		super();
-		this.id_libro = id_libro;
 		this.isbn_libro = isbn_libro;
 		this.titulo_libro = titulo_libro;
 		this.edicion_libro = edicion_libro;
@@ -70,7 +69,48 @@ public class Libro {
 
 	public Libro() {
 		super();
+	}
+
+	public long getId_libro() {
+		return id_libro;
+	}
+
+	public String getIsbn_libro() {
+		return isbn_libro;
+	}
+
+	public String getTitulo_libro() {
+		return titulo_libro;
+	}
+
+	public String getEdicion_libro() {
+		return edicion_libro;
+	}
+
+	public int getCantidad_libros() {
+		return cantidad_libros;
+	}
+
+	public Genero getGenero() {
+		return genero;
+	}
+
+	public Coleccion getColeccion() {
+		return coleccion;
+	}
+
+	public Editorial getEditorial() {
+		return editorial;
+	}
+
+	public List<Autor> getRelacionAutor() {
+		return relacionAutor;
+	}
+
+	public List<Prestamo> getLibros_con_prestamos() {
+		return libros_con_prestamos;
 	}   
     
+	
     
 }

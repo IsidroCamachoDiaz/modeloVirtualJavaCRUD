@@ -66,6 +66,16 @@ public class Acceso {
 		super();
 	}
 
+	public Acceso(long id_acceso, String codigo_acceso, String descripcion, List<Usuario> usuariosConAcceso) {
+		super();
+		this.id_acceso = id_acceso;
+		this.codigo_acceso = codigo_acceso;
+		this.descripcion = descripcion;
+		this.usuariosConAcceso = usuariosConAcceso;
+	}
+	
+	
+
 	
 	 
 	 

@@ -13,45 +13,52 @@ import jakarta.persistence.EntityManager;
 
 public class insert {
 	
-private EntityManager em;
 	
-	public insert(EntityManager em) {
+	public insert() {
 		super();
-		this.em = em;
 	}
-	public void insertAcceso(Acceso acceso) {
+	public void insertAcceso(EntityManager em,Acceso acceso) {
+		em.getTransaction().begin();
 	    em.persist(acceso);
 	    em.getTransaction().commit();
 	}
-	public void insertAutor(Autor autor) {
+	public void insertAutor(EntityManager em,Autor autor) {
+		em.getTransaction().begin();
 	    em.persist(autor);
 	    em.getTransaction().commit();
 	}
-	public void insertColeccion(Coleccion coleccion) {
+	public void insertColeccion(EntityManager em,Coleccion coleccion) {
+		em.getTransaction().begin();
 	    em.persist(coleccion);
 	    em.getTransaction().commit();
 	}
-	public void insertEditorial(Editorial editorial) {
+	public void insertEditorial(EntityManager em,Editorial editorial) {
+		em.getTransaction().begin();
 	    em.persist(editorial);
 	    em.getTransaction().commit();
 	}
-	public void insertEstadoPrestamo(EstadoPrestamo estadoPrestamo) {
+	public void insertEstadoPrestamo(EntityManager em,EstadoPrestamo estadoPrestamo) {
+		em.getTransaction().begin();
 	    em.persist(estadoPrestamo);
 	    em.getTransaction().commit();
 	}
-	public void insertGenero(Genero genero) {
+	public void insertGenero(EntityManager em,Genero genero) {
+		em.getTransaction().begin();
 	    em.persist(genero);
 	    em.getTransaction().commit();
 	}
-	public void insertLibro(Libro libro) {
+	public void insertLibro(EntityManager em,Libro libro) {
+		em.getTransaction().begin();
 	    em.persist(libro);
 	    em.getTransaction().commit();
 	}
-	public void insertPrestamo(Prestamo prestamo) {
+	public void insertPrestamo(EntityManager em,Prestamo prestamo) {
+		em.getTransaction().begin();
 	    em.persist(prestamo);
 	    em.getTransaction().commit();
 	}
-	public void insertUsuario(Usuario usuario) {
+	public void insertUsuario(EntityManager em,Usuario usuario) {
+		em.getTransaction().begin();
 	    em.persist(usuario);
 	    em.getTransaction().commit();
 	}

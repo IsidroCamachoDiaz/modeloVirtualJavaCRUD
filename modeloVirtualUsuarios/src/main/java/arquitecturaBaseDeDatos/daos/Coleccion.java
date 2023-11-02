@@ -24,9 +24,8 @@ public class Coleccion {
 	List<Libro> libros_con_coleccion;
 	 
 	//---------------------------------------------------------------
-	public Coleccion(long id_genero, String nombre_colecion, List<Libro> libros_con_coleccion) {
+	public Coleccion(String nombre_colecion, List<Libro> libros_con_coleccion) {
 		super();
-		this.id_genero = id_genero;
 		this.nombre_colecion = nombre_colecion;
 		this.libros_con_coleccion = libros_con_coleccion;
 	}

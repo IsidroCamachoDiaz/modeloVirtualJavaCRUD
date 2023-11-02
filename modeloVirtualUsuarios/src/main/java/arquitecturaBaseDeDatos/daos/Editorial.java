@@ -23,9 +23,8 @@ public class Editorial {
     List<Libro> libros_con_editorial;
 	
 	//---------------------------------------------------------------
-	public Editorial(long id_editorial, String nombre_editorial, List<Libro> libros_con_editorial) {
+	public Editorial(String nombre_editorial, List<Libro> libros_con_editorial) {
 		super();
-		this.id_editorial = id_editorial;
 		this.nombre_editorial = nombre_editorial;
 		this.libros_con_editorial = libros_con_editorial;
 	}

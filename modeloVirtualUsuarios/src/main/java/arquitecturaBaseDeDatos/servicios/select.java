@@ -15,90 +15,91 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
 public class select {
-	private EntityManager em;
+	//private EntityManager em;
 	
-	public select(EntityManager em) {
+	public select() {
 		super();
-		this.em = em;
 	}
 	
-	public Acceso selectAcceso(String query) {
-		TypedQuery<Acceso> consulta = em.createQuery(query,Acceso.class);
+	public Acceso selectAcceso(EntityManager em,String query) {
+		TypedQuery<Acceso> consulta = em.createQuery(query,Acceso.class);	
 		return consulta.getSingleResult();
 	}
 	
-	public Autor selectAutor(String query) {
+	public Autor selectAutor(EntityManager em,String query) {
 		TypedQuery<Autor> consulta = em.createQuery(query,Autor.class);
 		return consulta.getSingleResult();
 	}
 	
-	public Coleccion selectColeccion(String query) {
+	public Coleccion selectColeccion(EntityManager em,String query) {
 		TypedQuery<Coleccion> consulta = em.createQuery(query,Coleccion.class);
 		return consulta.getSingleResult();
 	}
 	
-	public Editorial selectEditorial(String query) {
+	public Editorial selectEditorial(EntityManager em,String query) {
 		TypedQuery<Editorial> consulta = em.createQuery(query,Editorial.class);
 		return consulta.getSingleResult();
 	}
 	
-	public EstadoPrestamo selectEstadoPrestamo(String query) {
+	public EstadoPrestamo selectEstadoPrestamo(EntityManager em,String query) {
 		TypedQuery<EstadoPrestamo> consulta = em.createQuery(query,EstadoPrestamo.class);
 		return consulta.getSingleResult();
 	}
 	
-	public Genero selectGenero(String query) {
+	public Genero selectGenero(EntityManager em,String query) {
 		TypedQuery<Genero> consulta = em.createQuery(query,Genero.class);
 		return consulta.getSingleResult();
 	}
 	
-	public Libro selectLibro(String query) {
+	public Libro selectLibro(EntityManager em,String query) {
 		TypedQuery<Libro> consulta = em.createQuery(query,Libro.class);
 		return consulta.getSingleResult();
 	}
 	
-	public Prestamo selectPrestamo(String query) {
+	public Prestamo selectPrestamo(EntityManager em,String query) {
 		TypedQuery<Prestamo> consulta = em.createQuery(query,Prestamo.class);
 		return consulta.getSingleResult();
 	}
 	
-	public Usuario selectUsuario(String query) {
+	public Usuario selectUsuario(EntityManager em,String query) {
 		TypedQuery<Usuario> consulta = em.createQuery(query,Usuario.class);
 		return consulta.getSingleResult();
 	}
 	
-	public List <Acceso> selectAllAccesos(String query){
+	public List <Acceso> selectAllAccesos(EntityManager em,String query){
 		TypedQuery<Acceso> consulta = em.createQuery(query,Acceso.class);
 		return consulta.getResultList();
 	}
 	
-	public List <Autor> selectAllAutores(String query){
+	public List <Autor> selectAllAutores(EntityManager em,String query){
 		TypedQuery<Autor> consulta = em.createQuery(query,Autor.class);
 		return consulta.getResultList();
 	}
 	
-	public List <Coleccion> selectAllColecciones(String query){
+	public List <Coleccion> selectAllColecciones(EntityManager em,String query){
 		TypedQuery<Coleccion> consulta = em.createQuery(query,Coleccion.class);
 		return consulta.getResultList();
 	}
-	public List<Editorial> selectAllEditoriales(String query) {
+	public List<Editorial> selectAllEditoriales(EntityManager em,String query) {
 	    TypedQuery<Editorial> consulta = em.createQuery(query, Editorial.class);
 	    return consulta.getResultList();
 	}
-	public List<EstadoPrestamo> selectAllEstadosPrestamo(String query) {
+	public List<EstadoPrestamo> selectAllEstadosPrestamo(EntityManager em,String query) {
 	    TypedQuery<EstadoPrestamo> consulta = em.createQuery(query, EstadoPrestamo.class);
 	    return consulta.getResultList();
 	}
-	public List<Genero> selectAllGeneros(String query) {
+	public List<Genero> selectAllGeneros(EntityManager em,String query) {
 	    TypedQuery<Genero> consulta = em.createQuery(query, Genero.class);
 	    return consulta.getResultList();
 	}
-	public List<Libro> selectAllLibros(String query) {
+	public List<Libro> selectAllLibros(EntityManager em,String query) {
 	    TypedQuery<Libro> consulta = em.createQuery(query, Libro.class);
 	    return consulta.getResultList();
 	}
-	public List<Prestamo> selectAllPrestamos(String query) {
+	public List<Prestamo> selectAllPrestamos(EntityManager em,String query) {
+		em.getTransaction().begin();
 	    TypedQuery<Prestamo> consulta = em.createQuery(query, Prestamo.class);
+	    em.close();
 	    return consulta.getResultList();
 	}
 

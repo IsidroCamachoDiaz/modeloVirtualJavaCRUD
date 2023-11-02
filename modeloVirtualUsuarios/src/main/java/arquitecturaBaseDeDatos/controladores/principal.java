@@ -8,6 +8,11 @@ import java.util.List;
 
 import arquitecturaBaseDeDatos.daos.Acceso;
 import arquitecturaBaseDeDatos.daos.Autor;
+import arquitecturaBaseDeDatos.daos.Coleccion;
+import arquitecturaBaseDeDatos.daos.Editorial;
+import arquitecturaBaseDeDatos.daos.Genero;
+import arquitecturaBaseDeDatos.daos.Libro;
+import arquitecturaBaseDeDatos.daos.Prestamo;
 import arquitecturaBaseDeDatos.daos.Usuario;
 import arquitecturaBaseDeDatos.servicios.insert;
 import arquitecturaBaseDeDatos.servicios.select;
@@ -23,44 +28,44 @@ public class principal {
 	public static void main(String[] args) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistenceUnitName");
 		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();
 		
 		//-------------------------------------------------
-		/*Autor a = new Autor();
-		a.setNombre_autor("Fernando");
-		a.setApellidos_autor("Hernandez");*/
-		insert i = new insert(em);
-		//i.insertAutor(a);
-		/*Acceso ac = new Acceso();
-		ac.setCodigo_acceso("Admin");
-		ac.setDescripcion("Administrador de la aplicacion");*/
+		select s = new select();
+		//Acceso a2 = s.selectAcceso(em,"SELECT a FROM Acceso a WHERE a.id_acceso=1");
 		
-		Usuario us = new Usuario();
-		//us.setAcceso(ac);
+		//Usuario us = new Usuario("526547321C","Manuel","Sanchez","82735125","manuel32@gmail.com",
+				//"ighfighjuyko",a2,false,null,new GregorianCalendar(),null,new ArrayList <Prestamo> ());
 		
-		List <Usuario> users = new ArrayList <Usuario>();
-		users.add(us);	
-		//ac.setUsuariosConAcceso(users);
-		us.setApellidos_usuario("Gutierrez2");
-		us.setClave_usuario("suuu8627852");
-		us.setDni_usuario("66834966G");
-		us.setEmail_usuario("yewfghcv@yfshg.com");
-		us.setEsta_bloqueado_usuario(false);
-		us.setFch_alta_usuario(new GregorianCalendar());
-		//i.insertAcceso(ac);
-		//i.insertUsuario(us);
-		select s = new select(em);
-		Acceso a2 = s.selectAcceso("SELECT a FROM Acceso a WHERE a.id_acceso=1");
-		us.setAcceso(a2);
-		users.add(us);
-		a2.getUsuariosConAcceso().add(us);
-		us.setNombre_usuario("Manueeeel2");
-		us.setTlf_usuario("98047465874");
-		i.insertUsuario(us);
-		update u = new update(em);
-		u.updateAcceso(a2);
+		//a2.getUsuariosConAcceso().add(us);
+		insert i = new insert ();
+		//i.insertUsuario(em,us);
+		//Autor a1 = new Autor("Manolo","Doviño",new ArrayList <Libro>());
+		//Autor a2 = new Autor("Manolo","Doviño Junior",new ArrayList <Libro>());
+		/*Genero g1 = new Genero("Documental","Documentales de todo tipo",new ArrayList <Libro>());
+		Coleccion c1 = new Coleccion("Colecion Manolo",new ArrayList <Libro>());
+		Editorial e1= new Editorial("Propio Manolo",new ArrayList <Libro>());
+		Libro l1= new Libro("ioujtguhg","Alarmas Mil","1",2,g1,c1,e1,new ArrayList <Autor>(),new ArrayList <Prestamo>());
+		l1.getRelacionAutor().add(a1);
+		l1.getRelacionAutor().add(a2);
+		i.insertAutor(em, a1);
+		i.insertAutor(em, a2);
+		i.insertGenero(em, g1);
+		i.insertColeccion(em, c1);
+		i.insertEditorial(em, e1);
+		i.insertLibro(em, l1);*/
+		/*Libro l1= s.selectLibro(em, "SELECT l FROM Libro l WHERE l.id_libro=1");
+		Autor a1= s.selectAutor(em, "SELECT a FROM Autor a WHERE a.id_autor=2");
+		l1.getRelacionAutor().add(a1);
+		a1.getRelacionLibro().add(l1);
+		update u = new update();
+		u.updateLibro(em, l1);
+		u.updateAutor(em, a1);*/
+		Libro l1= s.selectLibro(em, "SELECT l FROM Libro l WHERE l.id_libro=1");
+		for(int i2 =0; i2<l1.getRelacionAutor().size();i2++)
+			System.out.println(l1.getRelacionAutor().get(i2).toString());
 		//-------------------------------------------------
 		em.close();
+
 		
 
 		
