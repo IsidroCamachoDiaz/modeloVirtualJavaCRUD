@@ -140,10 +140,14 @@ public class Usuario {
 	}
 	public void setAcceso(Acceso acceso) {
 		this.acceso = acceso;
-	}
-	
-	
+	}	
 
+	public List<Prestamo> getLista_usuario_prestamos() {
+		return lista_usuario_prestamos;
+	}
+	public void setLista_usuario_prestamos(List<Prestamo> lista_usuario_prestamos) {
+		this.lista_usuario_prestamos = lista_usuario_prestamos;
+	}
 	public void setEsta_bloqueado_usuario(boolean esta_bloqueado_usuario) {
 		this.esta_bloqueado_usuario = esta_bloqueado_usuario;
 	}

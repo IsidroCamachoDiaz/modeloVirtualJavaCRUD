@@ -43,7 +43,7 @@ public class Prestamo {
 	private Calendar fch_entrega_prestamo;
 	
 	@Column(name="cantidad", nullable=false)
-	private String cantidad;
+	private int cantidad;
 	
 	@ManyToOne
     @JoinColumn(name="id_estado_prestamo")
@@ -54,10 +54,9 @@ public class Prestamo {
 	
 
 	//---------------------------------------------------------------
-	public Prestamo(long id_prestamo, Libro libro, Usuario usuario, Calendar inicio_prestamo, Calendar fch_fin_prestamo,
-			Calendar fch_entrega_prestamo, String cantidad, EstadoPrestamo estado_prestamo,List <Libro> prestamoLibros) {
+	public Prestamo(Libro libro, Usuario usuario, Calendar inicio_prestamo, Calendar fch_fin_prestamo,
+			Calendar fch_entrega_prestamo, int cantidad, EstadoPrestamo estado_prestamo,List <Libro> prestamoLibros) {
 		super();
-		this.id_prestamo = id_prestamo;
 		this.libro = libro;
 		this.usuario = usuario;
 		this.inicio_prestamo = inicio_prestamo;
@@ -72,6 +71,53 @@ public class Prestamo {
 	public Prestamo() {
 		super();
 	}
+
+
+	public long getId_prestamo() {
+		return id_prestamo;
+	}
+
+
+	public Libro getLibro() {
+		return libro;
+	}
+
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+
+	public Calendar getInicio_prestamo() {
+		return inicio_prestamo;
+	}
+
+
+	public Calendar getFch_fin_prestamo() {
+		return fch_fin_prestamo;
+	}
+
+
+	public Calendar getFch_entrega_prestamo() {
+		return fch_entrega_prestamo;
+	}
+
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+
+	public EstadoPrestamo getEstado_prestamo() {
+		return estado_prestamo;
+	}
+
+
+	public List<Libro> getLibrosConPrestamo() {
+		return librosConPrestamo;
+	}
+	
+	
 	
 	
 	

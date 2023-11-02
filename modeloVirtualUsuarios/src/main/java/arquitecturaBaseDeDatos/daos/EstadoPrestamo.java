@@ -41,10 +41,9 @@ public List<Prestamo> getLibrosConEstadoDePrestamos() {
 	return librosConEstadoDePrestamos;
 }
 
-public EstadoPrestamo(long id_estado_prestamo, String codigo_estado_prestamo, String descripcion_estado_prestamo,
+public EstadoPrestamo(String codigo_estado_prestamo, String descripcion_estado_prestamo,
 		List<Prestamo> librosConEstadoDePrestamos) {
 	super();
-	this.id_estado_prestamo = id_estado_prestamo;
 	this.codigo_estado_prestamo = codigo_estado_prestamo;
 	this.descripcion_estado_prestamo = descripcion_estado_prestamo;
 	this.librosConEstadoDePrestamos = librosConEstadoDePrestamos;

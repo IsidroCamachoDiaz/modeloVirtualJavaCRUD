@@ -8,6 +8,7 @@ import arquitecturaBaseDeDatos.daos.EstadoPrestamo;
 import arquitecturaBaseDeDatos.daos.Genero;
 import arquitecturaBaseDeDatos.daos.Libro;
 import arquitecturaBaseDeDatos.daos.Prestamo;
+import arquitecturaBaseDeDatos.daos.Usuario;
 import jakarta.persistence.EntityManager;
 
 public class update {
@@ -53,6 +54,11 @@ public class update {
 	public void updatePrestamo(EntityManager em,Prestamo prestamo) {
 		em.getTransaction().begin();
 	    em.merge(prestamo);
+	    em.getTransaction().commit();
+	}
+	public void updateUsuario(EntityManager em,Usuario usuario) {
+		em.getTransaction().begin();
+	    em.merge(usuario);
 	    em.getTransaction().commit();
 	}
 }

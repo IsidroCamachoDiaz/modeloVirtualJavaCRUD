@@ -10,6 +10,7 @@ import arquitecturaBaseDeDatos.daos.Acceso;
 import arquitecturaBaseDeDatos.daos.Autor;
 import arquitecturaBaseDeDatos.daos.Coleccion;
 import arquitecturaBaseDeDatos.daos.Editorial;
+import arquitecturaBaseDeDatos.daos.EstadoPrestamo;
 import arquitecturaBaseDeDatos.daos.Genero;
 import arquitecturaBaseDeDatos.daos.Libro;
 import arquitecturaBaseDeDatos.daos.Prestamo;
@@ -53,16 +54,37 @@ public class principal {
 		i.insertColeccion(em, c1);
 		i.insertEditorial(em, e1);
 		i.insertLibro(em, l1);*/
-		/*Libro l1= s.selectLibro(em, "SELECT l FROM Libro l WHERE l.id_libro=1");
+		/*Libro l1= s.selectLibro(em, id_estado_prestamo);
 		Autor a1= s.selectAutor(em, "SELECT a FROM Autor a WHERE a.id_autor=2");
 		l1.getRelacionAutor().add(a1);
 		a1.getRelacionLibro().add(l1);
 		update u = new update();
 		u.updateLibro(em, l1);
 		u.updateAutor(em, a1);*/
+		update u = new update();
+		insert i3 = new insert();
+		
 		Libro l1= s.selectLibro(em, "SELECT l FROM Libro l WHERE l.id_libro=1");
+		Usuario u1= s.selectUsuario(em, "SELECT u FROM Usuario u WHERE u.id_usuario=1");
+		
 		for(int i2 =0; i2<l1.getRelacionAutor().size();i2++)
 			System.out.println(l1.getRelacionAutor().get(i2).toString());
+		
+		EstadoPrestamo ep = s.selectEstadoPrestamo(em, "SELECT e FROM EstadoPrestamo e WHERE e.id_estado_prestamo=1");
+		
+		Prestamo p = new Prestamo(l1,u1,new GregorianCalendar(),new GregorianCalendar(),null,1,ep,new ArrayList <Libro>());
+		
+		p.getLibrosConPrestamo().add(l1);
+		l1.getLibros_con_prestamos().add(p);
+		ep.getLibrosConEstadoDePrestamos().add(p);
+		u1.getLista_usuario_prestamos().add(p);
+		i3.insertPrestamo(em, p);
+		u.updateLibro(em, l1);
+		u.updateUsuario(em, u1);		
+		
+		u.updateEstadoPrestamo(em, ep);
+		
+		
 		//-------------------------------------------------
 		em.close();
 
